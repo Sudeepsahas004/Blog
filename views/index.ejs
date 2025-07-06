@@ -1,0 +1,24 @@
+<%- include("partials/header") %>
+
+<h1 class="mb-4 text-center" style="color:black;">All Blog Posts</h1>
+
+<% if (blogs.length === 0) { %>
+  <p class="text-center">No blogs found. Start writing!</p>
+<% } else { %>
+  <% blogs.forEach(blog => { %>
+    <div class="card mb-4 mx-auto" style="max-width: 700px;">
+      <div class="card-body text-center d-flex flex-column align-items-center">
+        <h2 class="card-title"><%= blog.title.toUpperCase() %></h2>
+
+        <% if (blog.image) { %>
+          <img src="<%= blog.image %>" class="card-img-top my-3" alt="Blog Image"
+               style="max-height: 300px; object-fit: cover; width: 100%;">
+        <% } %>
+
+        <a href="/blog/<%= blog.id %>" class="btn btn-primary mt-2">Read More</a>
+      </div>
+    </div>
+  <% }) %>
+<% } %>
+
+<%- include("partials/footer") %>
